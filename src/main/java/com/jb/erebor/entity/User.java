@@ -18,6 +18,8 @@ public class User {
     @Column(name="enabled")
     private int enabled;
 
+    /*
+
     @ManyToMany
     @JoinTable(
             name="project_user",
@@ -25,6 +27,9 @@ public class User {
             inverseJoinColumns = @JoinColumn(name="project_id")
     )
     private List<Project> projects;
+
+    */
+
 
     public User() {
     }
@@ -53,6 +58,7 @@ public class User {
         this.enabled = enabled;
     }
 
+    /*
     public List<Project> getProjects() {
         return projects;
     }
@@ -60,6 +66,8 @@ public class User {
     public void setProjects(List<Project> projects) {
         this.projects = projects;
     }
+
+
 
     @Override
     public String toString() {
@@ -70,4 +78,6 @@ public class User {
                 ", projects=" + projects +
                 '}';
     }
+
+     */
 }

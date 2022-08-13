@@ -27,6 +27,8 @@ public class Project {
     @Column(name="is_active")
     private int isActive;
 
+    /*
+
     @ManyToMany
     @JoinTable(
             name="project_user",
@@ -34,6 +36,8 @@ public class Project {
             inverseJoinColumns = @JoinColumn(name="username")
     )
     private List<User> users;
+
+     */
 
 
     public Project() {
@@ -87,6 +91,8 @@ public class Project {
         this.isActive = isActive;
     }
 
+    /*
+
     public List<User> getUsers() {
         return users;
     }
@@ -94,6 +100,8 @@ public class Project {
     public void setUsers(List<User> users) {
         this.users = users;
     }
+
+
 
     @Override
     public String toString() {
@@ -107,4 +115,6 @@ public class Project {
                 ", users=" + users +
                 '}';
     }
+
+     */
 }

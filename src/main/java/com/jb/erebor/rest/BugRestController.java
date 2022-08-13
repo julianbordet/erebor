@@ -2,8 +2,10 @@ package com.jb.erebor.rest;
 
 import com.jb.erebor.entity.Bug;
 import com.jb.erebor.entity.BugTransaction;
+import com.jb.erebor.entity.Project;
 import com.jb.erebor.helper.BugTransactionsContainer;
 import com.jb.erebor.service.BugService;
+import com.jb.erebor.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,10 +20,12 @@ public class BugRestController {
 
 
     private BugService bugService;
+    private ProjectService projectService;
 
     @Autowired
-    public BugRestController(BugService theBugService){
+    public BugRestController(BugService theBugService, ProjectService theProjectService){
         bugService = theBugService;
+        projectService = theProjectService;
     }
 
     @GetMapping("/bugs")
@@ -55,6 +59,14 @@ public class BugRestController {
 
         return theBugTransactionContainer;
 
+    }
+
+    @GetMapping("/bugs/projects")
+    public List<Project> getAllProjects(){
+
+        List<Project> projectList = projectService.findAll();
+
+        return  projectList;
     }
 
 
