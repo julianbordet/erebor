@@ -26,8 +26,14 @@ public class BugServiceImpl implements  BugService{
 
     @Override
     @Transactional
-    public Bug findById(int theId) {
-        return bugDAO.findById(theId);
+    public Bug findBugById(int theId) {
+        return bugDAO.findByBugId(theId);
+    }
+
+    @Override
+    @Transactional
+    public List<Bug> findBugsByDeveloper(String developerUsername) {
+        return bugDAO.findBugsByDeveloper(developerUsername);
     }
 
     @Override

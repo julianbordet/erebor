@@ -8,7 +8,9 @@ public interface BugService {
 
     public List<Bug> findAll();
 
-    public Bug findById(int theId);
+    public Bug findBugById(int theId);
+
+    public List<Bug> findBugsByDeveloper(String developerUsername);
 
     public void save(Bug theBug);
 

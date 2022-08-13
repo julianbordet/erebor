@@ -35,15 +35,30 @@ public class BugDAOHibernateImpl implements BugDAO {
     }
 
     @Override
-    public Bug findById(int theId) {
+    public Bug findByBugId(int bugId) {
 
         Session currentSession = entityManager.unwrap(Session.class);
 
-        Bug theBug = currentSession.get(Bug.class, theId);
+        Bug theBug = currentSession.get(Bug.class, bugId);
 
         return theBug;
 
     }
+
+    public List<Bug> findBugsByDeveloper(String developerUsername){
+
+        Session currentSession = entityManager.unwrap(Session.class);
+
+        Query<Bug> theQuery = currentSession.createQuery("from Bug where assignedTo=:developerUsername", Bug.class);
+
+        theQuery.setParameter("developerUsername", developerUsername);
+
+        List<Bug> bugList = theQuery.getResultList();
+
+        return bugList;
+
+    }
+
 
     @Override
     public void save(Bug theBug) {
