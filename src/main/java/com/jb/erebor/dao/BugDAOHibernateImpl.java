@@ -60,6 +60,7 @@ public class BugDAOHibernateImpl implements BugDAO {
 
     }
 
+
     public List<BugTransaction> findTransactionsForBug(int bugId){
 
         Session currentSession = entityManager.unwrap(Session.class);

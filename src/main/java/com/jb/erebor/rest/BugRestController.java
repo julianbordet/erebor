@@ -48,24 +48,14 @@ public class BugRestController {
         return developerBugs;
     }
 
-    @GetMapping("/bugs/getbugandtransactions/{bugId}")
-    public BugTransactionsContainer getBugTransactionsFromBugId(@PathVariable int bugId){
+    @GetMapping("/bugs/bug_container/{bugId}")
+    public BugTransactionsContainer getBugAndBugTransactionsFromBugId(@PathVariable int bugId){
 
         BugTransactionsContainer theBugTransactionContainer = bugService.findTransactionsForBug(bugId);
 
         return theBugTransactionContainer;
 
     }
-
-    /*
-    @GetMapping("/bugs/detail/{bugId}")
-    public Bug getBugDetailWithTransactions(@PathVariable int bugId){
-
-
-
-    }
-    */
-
 
 
 
