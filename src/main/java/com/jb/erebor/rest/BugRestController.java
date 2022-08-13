@@ -1,6 +1,8 @@
 package com.jb.erebor.rest;
 
 import com.jb.erebor.entity.Bug;
+import com.jb.erebor.entity.BugTransaction;
+import com.jb.erebor.helper.BugTransactionsContainer;
 import com.jb.erebor.service.BugService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,12 +48,24 @@ public class BugRestController {
         return developerBugs;
     }
 
+    @GetMapping("/bugs/getbugandtransactions/{bugId}")
+    public BugTransactionsContainer getBugTransactionsFromBugId(@PathVariable int bugId){
+
+        BugTransactionsContainer theBugTransactionContainer = bugService.findTransactionsForBug(bugId);
+
+        return theBugTransactionContainer;
+
+    }
+
+    /*
     @GetMapping("/bugs/detail/{bugId}")
     public Bug getBugDetailWithTransactions(@PathVariable int bugId){
 
-      
+
 
     }
+    */
+
 
 
 

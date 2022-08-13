@@ -1,6 +1,7 @@
 package com.jb.erebor.dao;
 
 import com.jb.erebor.entity.Bug;
+import com.jb.erebor.entity.BugTransaction;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,20 @@ public class BugDAOHibernateImpl implements BugDAO {
         List<Bug> bugList = theQuery.getResultList();
 
         return bugList;
+
+    }
+
+    public List<BugTransaction> findTransactionsForBug(int bugId){
+
+        Session currentSession = entityManager.unwrap(Session.class);
+
+        Query<BugTransaction> theQuery = currentSession.createQuery("from BugTransaction where bugId=:theBugId");
+
+        theQuery.setParameter("theBugId", bugId);
+
+        List<BugTransaction> bugTransactionList = theQuery.getResultList();
+
+        return bugTransactionList;
 
     }
 

@@ -1,6 +1,8 @@
 package com.jb.erebor.service;
 
 import com.jb.erebor.entity.Bug;
+import com.jb.erebor.entity.BugTransaction;
+import com.jb.erebor.helper.BugTransactionsContainer;
 
 import java.util.List;
 
@@ -11,6 +13,8 @@ public interface BugService {
     public Bug findBugById(int theId);
 
     public List<Bug> findBugsByDeveloper(String developerUsername);
+
+    public BugTransactionsContainer findTransactionsForBug(int bugId);
 
     public void save(Bug theBug);
 
