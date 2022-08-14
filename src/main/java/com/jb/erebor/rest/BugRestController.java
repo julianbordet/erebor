@@ -72,15 +72,22 @@ public class BugRestController {
         //in case bug sent to the backend has an id number I set it to 0, so that hibernate will create the correct
         //next id number
 
-        System.out.println(theBug);
-
         theBug.setBugId(0);
-
-
 
         bugService.save(theBug);
 
         return theBug;
+    }
+
+    @PutMapping("/bugs")
+    public Bug updateBug(@RequestBody Bug theBug){
+
+        //TODO Make field for title longer inmysql
+
+        bugService.save(theBug);
+
+        return theBug;
+
     }
 
 
