@@ -1,7 +1,9 @@
 package com.jb.erebor.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.util.List;
@@ -28,10 +30,8 @@ public class User {
             joinColumns=@JoinColumn(name="user_username"),
             inverseJoinColumns = @JoinColumn(name="project_project_id")
     )
-    /*
-    @JsonManagedReference
 
-     */
+
     @JsonBackReference
     public List<Project> projects;
 

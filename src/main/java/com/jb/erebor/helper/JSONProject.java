@@ -1,56 +1,41 @@
-package com.jb.erebor.entity;
+package com.jb.erebor.helper;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.jb.erebor.entity.User;
+import org.hibernate.mapping.Array;
 
 import javax.persistence.*;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-@Entity
-@Table(name="projects")
-public class Project {
+public class JSONProject {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="project_id")
     private int projectId;
 
-    @Column(name="project_name")
     private String projectName;
 
-    @Column(name="project_description")
     private String projectDescription;
 
-    @Column(name="project_created_by")
     private String projectCreatedBy;
 
-    @Column(name="project_current_owner")
     private String projectCurrentOwner;
 
-    @Column(name="is_active")
     private int isActive;
 
+    private List<User> userList;
 
+    public JSONProject(){
 
-    @ManyToMany(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-    })
-    @JoinTable(
-            name="project_user",
-            joinColumns = @JoinColumn(name="project_project_id"),
-            inverseJoinColumns = @JoinColumn(name="user_username")
-    )
-    @JsonManagedReference
-    private List<User> users;
+    }
 
-
-
-
-    public Project() {
+    public JSONProject(int projectId, String projectName, String projectDescription, String projectCreatedBy, String projectCurrentOwner, int isActive, List<User> users) {
+        this.projectId = projectId;
+        this.projectName = projectName;
+        this.projectDescription = projectDescription;
+        this.projectCreatedBy = projectCreatedBy;
+        this.projectCurrentOwner = projectCurrentOwner;
+        this.isActive = isActive;
+        this.userList = users;
     }
 
     public int getProjectId() {
@@ -101,30 +86,24 @@ public class Project {
         this.isActive = isActive;
     }
 
-
-
     public List<User> getUsers() {
-        return users;
+        return userList;
     }
 
     public void setUsers(List<User> users) {
-        this.users = users;
+        this.userList = users;
     }
-
-
 
     @Override
     public String toString() {
-        return "Project{" +
+        return "JSONProject{" +
                 "projectId=" + projectId +
                 ", projectName='" + projectName + '\'' +
                 ", projectDescription='" + projectDescription + '\'' +
                 ", projectCreatedBy='" + projectCreatedBy + '\'' +
                 ", projectCurrentOwner='" + projectCurrentOwner + '\'' +
                 ", isActive=" + isActive +
-                ", users=" + users +
+                ", users=" + userList +
                 '}';
     }
-
-
 }

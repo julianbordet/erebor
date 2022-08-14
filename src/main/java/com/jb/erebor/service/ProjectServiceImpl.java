@@ -4,6 +4,7 @@ import com.jb.erebor.dao.ProjectDAO;
 import com.jb.erebor.entity.Project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class ProjectServiceImpl implements ProjectService{
 
     @Override
     public Project findByProjectId(int projectId) {
-        return null;
+        return projectDAO.findByProjectId(projectId);
     }
 
     @Override
@@ -36,12 +37,18 @@ public class ProjectServiceImpl implements ProjectService{
     }
 
     @Override
+    @Transactional
     public void save(Project theProject) {
+
+        projectDAO.save(theProject);
 
     }
 
     @Override
+    @Transactional
     public void deleteById(int theId) {
+
+        projectDAO.deleteById(theId);
 
     }
 }
