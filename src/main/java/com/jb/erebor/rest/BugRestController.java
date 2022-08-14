@@ -7,10 +7,7 @@ import com.jb.erebor.helper.BugTransactionsContainer;
 import com.jb.erebor.service.BugService;
 import com.jb.erebor.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -67,6 +64,23 @@ public class BugRestController {
         List<Project> projectList = projectService.findAll();
 
         return  projectList;
+    }
+
+    @PostMapping("/bugs")
+    public Bug saveNewBug(@RequestBody Bug theBug){
+
+        //in case bug sent to the backend has an id number I set it to 0, so that hibernate will create the correct
+        //next id number
+
+        System.out.println(theBug);
+
+        theBug.setBugId(0);
+
+
+
+        bugService.save(theBug);
+
+        return theBug;
     }
 
 
