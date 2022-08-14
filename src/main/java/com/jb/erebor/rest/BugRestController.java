@@ -1,7 +1,6 @@
 package com.jb.erebor.rest;
 
 import com.jb.erebor.entity.Bug;
-import com.jb.erebor.entity.BugTransaction;
 import com.jb.erebor.entity.Project;
 import com.jb.erebor.helper.BugTransactionsContainer;
 import com.jb.erebor.service.BugService;
@@ -58,13 +57,7 @@ public class BugRestController {
 
     }
 
-    @GetMapping("/bugs/projects")
-    public List<Project> getAllProjects(){
 
-        List<Project> projectList = projectService.findAll();
-
-        return  projectList;
-    }
 
     @PostMapping("/bugs")
     public Bug saveNewBug(@RequestBody Bug theBug){
@@ -104,11 +97,6 @@ public class BugRestController {
         return "deleted bug with bug id:" + bugId;
 
     }
-
-
-
-
-
 
 
 }
