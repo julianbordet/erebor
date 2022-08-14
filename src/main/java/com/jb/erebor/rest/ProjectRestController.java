@@ -1,13 +1,10 @@
 package com.jb.erebor.rest;
 
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.util.JSONPObject;
+
 import com.jb.erebor.entity.Project;
-import com.jb.erebor.helper.JSONProject;
 import com.jb.erebor.service.BugService;
 import com.jb.erebor.service.ProjectService;
-import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +24,7 @@ public class ProjectRestController {
     }
 
     @GetMapping("/projects")
+    @CrossOrigin(origins = "http://localhost:3000")
     public List<Project> getAllProjects(){
 
         List<Project> projectList = projectService.findAll();
@@ -35,6 +33,7 @@ public class ProjectRestController {
     }
 
     @GetMapping("/projects/{projectId}")
+    @CrossOrigin(origins = "http://localhost:3000")
     public Project getProjectById(@PathVariable int projectId){
 
         Project theProject = projectService.findByProjectId(projectId);
@@ -44,7 +43,8 @@ public class ProjectRestController {
     }
 
     @PutMapping("/projects")
-    public JSONProject updateProject(@RequestBody JSONProject theProject){
+    @CrossOrigin(origins = "http://localhost:3000")
+    public Project updateProject(@RequestBody Project theProject){
 
         System.out.println(theProject);
 
@@ -59,6 +59,7 @@ public class ProjectRestController {
     }
 
     @DeleteMapping("/projects/{projectId}")
+    @CrossOrigin(origins = "http://localhost:3000")
     public String deleteProject(@PathVariable int projectId){
 
         Project tempProject = projectService.findByProjectId(projectId);

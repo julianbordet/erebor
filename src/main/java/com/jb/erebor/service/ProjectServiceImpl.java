@@ -19,6 +19,7 @@ public class ProjectServiceImpl implements ProjectService{
     }
 
     @Override
+    @Transactional
     public List<Project> findAll() {
 
         List<Project> projectList = projectDAO.findAll();
@@ -27,6 +28,7 @@ public class ProjectServiceImpl implements ProjectService{
     }
 
     @Override
+    @Transactional
     public Project findByProjectId(int projectId) {
         return projectDAO.findByProjectId(projectId);
     }
