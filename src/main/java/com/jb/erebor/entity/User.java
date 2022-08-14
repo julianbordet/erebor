@@ -1,5 +1,7 @@
 package com.jb.erebor.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -18,17 +20,17 @@ public class User {
     @Column(name="enabled")
     private int enabled;
 
-    /*
 
     @ManyToMany
     @JoinTable(
             name="project_user",
-            joinColumns = @JoinColumn(name="username"),
-            inverseJoinColumns = @JoinColumn(name="project_id")
+            joinColumns=@JoinColumn(name="user_username"),
+            inverseJoinColumns = @JoinColumn(name="project_project_id")
     )
-    private List<Project> projects;
+    @JsonManagedReference
+    public List<Project> projects;
 
-    */
+
 
 
     public User() {
@@ -58,7 +60,7 @@ public class User {
         this.enabled = enabled;
     }
 
-    /*
+
     public List<Project> getProjects() {
         return projects;
     }
@@ -79,5 +81,5 @@ public class User {
                 '}';
     }
 
-     */
+
 }

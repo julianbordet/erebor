@@ -1,6 +1,9 @@
 package com.jb.erebor.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -27,17 +30,21 @@ public class Project {
     @Column(name="is_active")
     private int isActive;
 
-    /*
 
-    @ManyToMany
+
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
     @JoinTable(
             name="project_user",
-            joinColumns = @JoinColumn(name="project_id"),
-            inverseJoinColumns = @JoinColumn(name="username")
+            joinColumns = @JoinColumn(name="project_project_id"),
+            inverseJoinColumns = @JoinColumn(name="user_username")
     )
+    @JsonBackReference
     private List<User> users;
 
-     */
+
 
 
     public Project() {
@@ -91,7 +98,7 @@ public class Project {
         this.isActive = isActive;
     }
 
-    /*
+
 
     public List<User> getUsers() {
         return users;
@@ -116,5 +123,5 @@ public class Project {
                 '}';
     }
 
-     */
+
 }
