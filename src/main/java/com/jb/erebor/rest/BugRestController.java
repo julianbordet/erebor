@@ -90,6 +90,23 @@ public class BugRestController {
 
     }
 
+    @DeleteMapping("/bugs/{bugId}")
+    public String deleteBug(@PathVariable int bugId){
+
+        Bug tempBug = bugService.findBugById(bugId);
+
+        if(tempBug == null){
+            throw new RuntimeException("Bug with id: " + bugId + "not found.");
+        }
+
+        bugService.deleteById(bugId);
+
+        return "deleted bug with bug id:" + bugId;
+
+    }
+
+
+
 
 
 
