@@ -61,8 +61,6 @@ public class BugRestController {
 
     }
 
-
-
     @PostMapping("/bugs")
     @CrossOrigin(origins = "http://localhost:3000")
     public Bug saveNewBug(@RequestBody Bug theBug){
@@ -86,7 +84,6 @@ public class BugRestController {
         bugService.save(theBug);
 
         return theBug;
-
     }
 
     @DeleteMapping("/bugs/{bugId}")
@@ -104,6 +101,5 @@ public class BugRestController {
         return "deleted bug with bug id:" + bugId;
 
     }
-
 
 }

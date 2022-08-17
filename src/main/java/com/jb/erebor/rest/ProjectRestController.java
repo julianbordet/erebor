@@ -48,11 +48,6 @@ public class ProjectRestController {
 
         System.out.println(theProject);
 
-        //TODO deserialization fails
-        /*
-        projectService.save(theProject);
-
-         */
 
         return theProject;
 
