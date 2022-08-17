@@ -24,7 +24,7 @@ public class ProjectRestController {
     }
 
     @GetMapping("/projects")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     public List<Project> getAllProjects(){
 
         List<Project> projectList = projectService.findAll();
@@ -33,7 +33,7 @@ public class ProjectRestController {
     }
 
     @GetMapping("/projects/{projectId}")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     public Project getProjectById(@PathVariable int projectId){
 
         Project theProject = projectService.findByProjectId(projectId);
@@ -43,7 +43,7 @@ public class ProjectRestController {
     }
 
     @PutMapping("/projects")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     public Project updateProject(@RequestBody Project theProject){
 
         System.out.println(theProject);
@@ -54,7 +54,7 @@ public class ProjectRestController {
     }
 
     @DeleteMapping("/projects/{projectId}")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     public String deleteProject(@PathVariable int projectId){
 
         Project tempProject = projectService.findByProjectId(projectId);

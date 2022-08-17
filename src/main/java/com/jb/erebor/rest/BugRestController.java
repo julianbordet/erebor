@@ -25,13 +25,13 @@ public class BugRestController {
     }
 
     @GetMapping("/bugs")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     public List<Bug> findAll(){
         return bugService.findAll();
     }
 
     @GetMapping("/bugs/{bugId}")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     public Bug getBug(@PathVariable int bugId){
         Bug theBug = bugService.findBugById(bugId);
 
@@ -43,7 +43,7 @@ public class BugRestController {
     }
 
     @GetMapping("/bugs/developer/{developerUsername}")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     public List<Bug> getBugsFromDeveloper(@PathVariable String developerUsername){
 
         List<Bug> developerBugs = bugService.findBugsByDeveloper(developerUsername);
@@ -52,7 +52,7 @@ public class BugRestController {
     }
 
     @GetMapping("/bugs/bug_container/{bugId}")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     public BugTransactionsContainer getBugAndBugTransactionsFromBugId(@PathVariable int bugId){
 
         BugTransactionsContainer theBugTransactionContainer = bugService.findTransactionsForBug(bugId);
@@ -62,7 +62,7 @@ public class BugRestController {
     }
 
     @PostMapping("/bugs")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     public Bug saveNewBug(@RequestBody Bug theBug){
 
         //in case bug sent to the backend has an id number I set it to 0, so that hibernate will create the correct
@@ -76,7 +76,7 @@ public class BugRestController {
     }
 
     @PutMapping("/bugs")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     public Bug updateBug(@RequestBody Bug theBug){
 
         //TODO Make field for title longer inmysql
@@ -87,7 +87,7 @@ public class BugRestController {
     }
 
     @DeleteMapping("/bugs/{bugId}")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     public String deleteBug(@PathVariable int bugId){
 
         Bug tempBug = bugService.findBugById(bugId);

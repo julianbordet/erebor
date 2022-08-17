@@ -30,7 +30,7 @@ public class UserRestController {
     }
 
     @GetMapping("/developers")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     public List<User> findAll(){
 
         return userService.findAll();
