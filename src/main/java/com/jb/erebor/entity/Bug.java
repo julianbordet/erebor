@@ -1,6 +1,10 @@
 package com.jb.erebor.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="bugs")
@@ -47,6 +51,12 @@ public class Bug {
     @Column(name="date_fixed")
     private String dateFixed;
 
+    @OneToMany(mappedBy="bugId",
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.REMOVE})
+    //  cascade = {CascadeType.ALL})
+    //@JsonBackReference
+    @JsonManagedReference
+    private List<BugTransaction> bugTransactions;
 
     public Bug() {
     }
@@ -172,6 +182,13 @@ public class Bug {
         this.dateFixed = dateFixed;
     }
 
+    public List<BugTransaction> getBugTransactions() {
+        return bugTransactions;
+    }
+
+    public void setBugTransactions(List<BugTransaction> bugTransactions) {
+        this.bugTransactions = bugTransactions;
+    }
 
     @Override
     public String toString() {

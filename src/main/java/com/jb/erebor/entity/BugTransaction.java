@@ -1,5 +1,8 @@
 package com.jb.erebor.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -23,8 +26,12 @@ public class BugTransaction {
     @Column(name="created_by")
     private String createdBy;
 
-    @Column(name="bug_id")
-    private int bugId;
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.REMOVE})
+    //@ManyToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name="bug_id")
+    //@JsonManagedReference
+    @JsonBackReference
+    private Bug bugId;
 
     public BugTransaction() {
     }
@@ -69,11 +76,11 @@ public class BugTransaction {
         this.createdBy = createdBy;
     }
 
-    public int getBugId() {
+    public Bug getBugId() {
         return bugId;
     }
 
-    public void setBugId(int bugId) {
+    public void setBugId(Bug bugId) {
         this.bugId = bugId;
     }
 
