@@ -63,6 +63,12 @@ public class BugServiceImpl implements  BugService{
 
     @Override
     @Transactional
+    public void merge(Bug theBug){
+        bugDAO.merge(theBug);
+    }
+
+    @Override
+    @Transactional
     public void deleteById(int theId) {
         bugDAO.deleteById(theId);
     }

@@ -17,6 +17,9 @@ public interface BugDAO {
 
     public void save (Bug theBug);
 
-    public void deleteById(int theId);
+    public void merge(Bug theBug);
+
+
+        public void deleteById(int theId);
 
 }

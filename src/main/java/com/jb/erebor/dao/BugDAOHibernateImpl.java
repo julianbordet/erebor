@@ -81,12 +81,16 @@ public class BugDAOHibernateImpl implements BugDAO {
 
         Session currentSession = entityManager.unwrap(Session.class);
 
-        // old
-        //currentSession.saveOrUpdate(theBug);
+        currentSession.saveOrUpdate(theBug);
 
-        //new that works
+    }
+
+
+    public void merge(Bug theBug){
+
+        Session currentSession = entityManager.unwrap(Session.class);
+
         currentSession.merge(theBug);
-
 
     }
 

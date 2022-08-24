@@ -18,6 +18,8 @@ public interface BugService {
 
     public void save(Bug theBug);
 
+    public void merge(Bug theBug);
+
     public void deleteById(int theId);
 
     Bug compareBugsAndCreateTransaction(Bug updatedBug, Bug originalBug);

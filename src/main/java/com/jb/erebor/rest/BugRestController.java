@@ -100,7 +100,7 @@ public class BugRestController {
 
 
         //update bug
-        bugService.save(theUpdatedBug);
+        bugService.merge(theUpdatedBug);
 
         return theUpdatedBug;
     }
