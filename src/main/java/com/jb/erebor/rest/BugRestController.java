@@ -77,13 +77,32 @@ public class BugRestController {
 
     @PutMapping("/bugs")
     @CrossOrigin
-    public Bug updateBug(@RequestBody Bug theBug){
+    public Bug updateBug(@RequestBody Bug updatedBug){
 
-        //TODO Make field for title longer inmysql
+        //Compare bugs and create bugTransaction
+        //Bug originalBug = bugService.findBugById(updatedBug.getBugId());
+        Bug originalBug = new Bug();
+        originalBug.setTitle(bugService.findBugById(updatedBug.getBugId()).getTitle());
+        originalBug.setAssignedTo(bugService.findBugById(updatedBug.getBugId()).getAssignedTo());
+        originalBug.setCreatedBy(bugService.findBugById(updatedBug.getBugId()).getCreatedBy());
+        originalBug.setDescription(bugService.findBugById(updatedBug.getBugId()).getDescription());
+        originalBug.setPriority(bugService.findBugById(updatedBug.getBugId()).getPriority());
+        originalBug.setSeverity(bugService.findBugById(updatedBug.getBugId()).getSeverity());
+        originalBug.setDateFixed(bugService.findBugById(updatedBug.getBugId()).getDateFixed());
+        originalBug.setIsFixed(bugService.findBugById(updatedBug.getBugId()).getIsFixed());
+        originalBug.setDueDate(bugService.findBugById(updatedBug.getBugId()).getDueDate());
+        originalBug.setProjectId(bugService.findBugById(updatedBug.getBugId()).getProjectId());
+        originalBug.setStepsToReproduce(bugService.findBugById(updatedBug.getBugId()).getStepsToReproduce());
 
-        bugService.save(theBug);
 
-        return theBug;
+
+        Bug theUpdatedBug = bugService.compareBugsAndCreateTransaction(updatedBug, originalBug);
+
+
+        //update bug
+        bugService.save(theUpdatedBug);
+
+        return theUpdatedBug;
     }
 
     @DeleteMapping("/bugs/{bugId}")

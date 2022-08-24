@@ -20,4 +20,6 @@ public interface BugService {
 
     public void deleteById(int theId);
 
+    Bug compareBugsAndCreateTransaction(Bug updatedBug, Bug originalBug);
+
 }

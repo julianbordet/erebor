@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -188,6 +189,17 @@ public class Bug {
 
     public void setBugTransactions(List<BugTransaction> bugTransactions) {
         this.bugTransactions = bugTransactions;
+    }
+
+    public void addBugTransaction(BugTransaction newBugTransaction){
+
+        if(this.bugTransactions == null){
+            this.bugTransactions = new ArrayList<>();
+        }
+
+        bugTransactions.add(newBugTransaction);
+
+        newBugTransaction.setBugId(this);
     }
 
     @Override
