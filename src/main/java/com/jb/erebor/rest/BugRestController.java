@@ -96,13 +96,13 @@ public class BugRestController {
 
 
 
-        Bug theUpdatedBug = bugService.compareBugsAndCreateTransaction(updatedBug, originalBug);
+        bugService.compareBugsAndCreateTransaction(updatedBug, originalBug);
 
 
         //update bug
-        bugService.merge(theUpdatedBug);
+        bugService.merge(updatedBug);
 
-        return theUpdatedBug;
+        return updatedBug;
     }
 
     @DeleteMapping("/bugs/{bugId}")

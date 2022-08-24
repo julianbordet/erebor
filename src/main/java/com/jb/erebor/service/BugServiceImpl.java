@@ -74,7 +74,7 @@ public class BugServiceImpl implements  BugService{
     }
 
     @Override
-    public Bug compareBugsAndCreateTransaction(Bug updatedBug, Bug originalBug) {
+    public void compareBugsAndCreateTransaction(Bug updatedBug, Bug originalBug) {
 
         //UserUtility userUtility = new UserUtility();
 
@@ -171,11 +171,7 @@ public class BugServiceImpl implements  BugService{
 
             updatedBug.addBugTransaction(newBugTransaction);
 
-
         }
-
-        //new
-        return updatedBug;
 
     }
 }
