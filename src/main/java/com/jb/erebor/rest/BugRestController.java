@@ -115,6 +115,10 @@ public class BugRestController {
             throw new RuntimeException("Bug with id: " + bugId + "not found.");
         }
 
+       
+
+        bugService.deleteTransactions(tempBug);
+
         bugService.deleteById(bugId);
 
         return "deleted bug with bug id:" + bugId;

@@ -174,4 +174,11 @@ public class BugServiceImpl implements  BugService{
         }
 
     }
+
+
+    @Override
+    @Transactional
+    public void deleteTransactions(Bug theBug) {
+        bugDAO.deleteTransactions(theBug);
+    }
 }

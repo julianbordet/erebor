@@ -19,7 +19,8 @@ public interface BugDAO {
 
     public void merge(Bug theBug);
 
+    public void deleteById(int theId);
 
-        public void deleteById(int theId);
+    void deleteTransactions(Bug theBug);
 
 }

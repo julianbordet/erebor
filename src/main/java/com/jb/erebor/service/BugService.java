@@ -24,4 +24,6 @@ public interface BugService {
 
     void compareBugsAndCreateTransaction(Bug updatedBug, Bug originalBug);
 
+    void deleteTransactions(Bug theBug);
+
 }

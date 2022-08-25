@@ -106,4 +106,17 @@ public class BugDAOHibernateImpl implements BugDAO {
         theQuery.executeUpdate();
 
     }
+
+    @Override
+    public void deleteTransactions(Bug theBug) {
+
+        Session currentSession = entityManager.unwrap(Session.class);
+
+        Query theQuery = currentSession.createQuery("delete from BugTransaction where bugId=:theBugId");
+
+        theQuery.setParameter("theBugId", theBug);
+
+        theQuery.executeUpdate();
+
+    }
 }
